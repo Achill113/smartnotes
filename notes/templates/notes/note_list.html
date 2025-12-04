@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="my-5">Notes</h1>
+  
+  <div class="row row-cols3 g-2">
+    {% for note in notes %}
+    <div class="col">
+      <div class="p-3 border">
+        <h3>{{note.title}}</h3>
+        <p>{{note.text|truncatechars:10}}</p>
+        <a href="{% url 'notes:detail' pk=note.pk %}" class="btn btn-primary">View</a>
+      </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'notes:new' %}" class="btn btn-primary">New Note</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,96 @@
+# ================================
+# Django & Python
+# ================================
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# Django specific
+/media/
+staticfiles/
+static/
+assets/
+*.mo
+
+# Django migrations (optional — uncomment ONLY if you do not want to track them)
+# */migrations/*
+# !*/migrations/__init__.py
+
+# Local environment settings
+.env
+.env.*
+*.env
+env/
+venv/
+venv*/
+.idea/
+.vscode/
+
+# ================================
+# Python tooling
+# ================================
+.venv/
+Pipfile.lock
+pip-wheel-metadata/
+__pycache__/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Coverage and test artifacts
+htmlcov/
+.coverage
+.coverage.*
+.cache/
+.nox/
+.tox/
+pytest_cache/
+
+# ================================
+# OS files
+# ================================
+.DS_Store
+Thumbs.db
+
+# ================================
+# Docker
+# ================================
+docker-compose.override.yml
+*.pid
+
+# ================================
+# Editor / IDE
+# ================================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# JetBrains
+*.iml
+*.ipr
+*.iws
+.idea
+
+# ================================
+# Node (if using frontend assets)
+# ================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ================================
+# Misc
+# ================================
+*.bak
+*.tmp

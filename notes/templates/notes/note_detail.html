@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="border round p-1">
+  <h1 class="my-5">{{note.title}}</h1>
+  <p>{{note.text}}</p>
+  <p>{{note.likes}} Like(s)</p>
+  <a href="{% url 'notes:list' %}" class="btn btn-primary">Go back to notes</a>
+</div>
+{% endblock %}
