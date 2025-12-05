@@ -16,8 +16,6 @@ db.sqlite3
 # Django specific
 /media/
 staticfiles/
-static/
-assets/
 *.mo
 
 # Django migrations (optional — uncomment ONLY if you do not want to track them)
