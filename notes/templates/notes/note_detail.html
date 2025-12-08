@@ -5,12 +5,26 @@
   <h1 class="my-5">{{note.title}}</h1>
   <p>{{note.text}}</p>
   <p>{{note.likes}} Like(s)</p>
+  {% if note.is_public %}
+  <p>This note is public</p>
+  {% endif %}
   <a href="{% url 'notes:delete' note.pk %}" class="btn btn-danger">Delete</a>
   <a href="{% url 'notes:update' note.pk %}" class="btn btn-secondary">Edit</a>
   <form method='POST' class="d-inline" action="{% url 'notes:add_like' pk=note.pk %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Like</button>
+  </form>
+  <form method='POST' class="d-inline" action="{% url 'notes:change_visibility' pk=note.pk %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">
+      {% if not note.is_public %}
+      Make Public
+      {% else %}
+      Make Private
+      {% endif %}
+    </button>
   </form>
 </div>
 <a href="{% url 'notes:list' %}" class="btn btn-secondary mt-2">Back</a>
