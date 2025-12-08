@@ -12,5 +12,8 @@ urlpatterns = [
          name='popular'),
     path('notes/new', views.CreateNoteView.as_view(), name='new'),
     path('notes/<int:pk>/add_like', views.add_like_view, name='add_like'),
-    path('notes/<int:pk>/change_visibility', views.change_visibility_view, name='change_visibility')
+    path('notes/<int:pk>/change_visibility', views.change_visibility_view,
+         name='change_visibility'),
+    path('notes/public/<int:pk>', views.PublicNotesDetailView.as_view(),
+         name='public')
 ]

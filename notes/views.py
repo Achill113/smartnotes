@@ -28,10 +28,22 @@ class NotesListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return self.request.user.notes.all()
 
-class NotesDetailView(DetailView):
+class NotesDetailView(LoginRequiredMixin, DetailView):
+    model = Note
+    context_object_name = 'note'
+    login_url = "/login"
+
+class PublicNotesDetailView(DetailView):
     model = Note
     context_object_name = 'note'
 
+    def get_object(self, queryset=None):
+        note = super().get_object(queryset)
+        if not note.is_public:
+            raise Http404
+
+        return note
+    
 class PopularNotesListView(ListView):
     model = Note
     context_object_name = 'notes'
@@ -39,15 +51,17 @@ class PopularNotesListView(ListView):
     def get_queryset(self):
         return Note.objects.filter(likes__gte=1)
 
-class UpdateNoteView(UpdateView):
+class UpdateNoteView(LoginRequiredMixin, UpdateView):
     model = Note
     form_class = NotesForm
     success_url = '/smart/notes'
+    login_url = '/login'
 
-class DeleteNoteView(DeleteView):
+class DeleteNoteView(LoginRequiredMixin, DeleteView):
     model = Note
     success_url = '/smart/notes'
     template_name = 'notes/note_delete.html'
+    login_url = '/login'
 
 def add_like_view(request, pk):
     if request.method == 'POST':
